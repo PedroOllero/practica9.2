@@ -71,22 +71,46 @@ export const tieneCaracteresEspeciales = (clave: string): ValidacionClave => {
     };
   } else {
     return {
-        esValida: false,
-        error: "La contraseña debe contener al menos un caracter especial"
-      };
+      esValida: false,
+      error: "La contraseña debe contener al menos un caracter especial",
+    };
   }
 };
 
 export const tieneLongitudMinima = (clave: string): ValidacionClave => {
-    let contraseñaArray: string[] = clave.split("");
-    if(contraseñaArray.length < 8){
-        return {
-            esValida: false,
-            error: "La contraseña debe contener al menos 8 caracteres"
-          };
-    }else{
-        return {
-            esValida: true,
-          };
-    }
-  };
+  let contraseñaArray: string[] = clave.split("");
+  if (contraseñaArray.length < 8) {
+    return {
+      esValida: false,
+      error: "La contraseña debe contener al menos 8 caracteres",
+    };
+  } else {
+    return {
+      esValida: true,
+    };
+  }
+};
+
+const tieneNombreUsuario = (
+  nombreUsuario: string,
+  clave: string
+): ValidacionClave => {};
+
+export const tienePalabrasComunes = (
+  clave: string,
+  commonPasswords: string[]
+): ValidacionClave => {
+  const hayEspeciales = commonPasswords.some((item) =>
+  item === clave
+  );
+  if(hayEspeciales === true){
+    return {
+        esValida: false,
+        error: "La contraseña no puede ser tan facil",
+      }
+  }else{
+    return{
+        esValida: true,
+      }
+  }
+};
