@@ -1,51 +1,60 @@
 import { commonPasswords } from "./const";
-import { tieneCaracteresEspeciales, tieneLongitudMinima, tieneMayusculasYMinusculas, tieneNombreUsuario, tieneNumeros, tienePalabrasComunes, validarClave } from "./main";
+import {
+  tieneCaracteresEspeciales,
+  tieneLongitudMinima,
+  tieneMayusculasYMinusculas,
+  tieneNombreUsuario,
+  tieneNumeros,
+  tienePalabrasComunes,
+  validarClave,
+} from "./main";
 
 describe("tieneMayusculasYMinusculas", () => {
   it("caso1", () => {
     // Arrange
-    let contraseña = "asdjakAKA"
+    let contraseña = "asdjakAKA";
     // Act
-    let comprobacion = tieneMayusculasYMinusculas(contraseña)
+    let comprobacion = tieneMayusculasYMinusculas(contraseña);
     let resultado = {
       esValida: true,
-    }
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
   it("caso2", () => {
     // Arrange
-    let contraseña = "asdf"
+    let contraseña = "asdf";
     // Act
-    let comprobacion = tieneMayusculasYMinusculas(contraseña)
+    let comprobacion = tieneMayusculasYMinusculas(contraseña);
     let resultado = {
       esValida: false,
-      error: "No contiene al menos una mayuscula"
-    }
+      error: "No contiene al menos una mayuscula",
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
   it("caso3", () => {
     // Arrange
-    let contraseña = "1843"
+    let contraseña = "1843";
     // Act
-    let comprobacion = tieneMayusculasYMinusculas(contraseña)
+    let comprobacion = tieneMayusculasYMinusculas(contraseña);
     let resultado = {
       esValida: false,
-      error: "La contraseña debe contener al menos una mayuscula y una minuscula"
-    }
+      error:
+        "La contraseña debe contener al menos una mayuscula y una minuscula",
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
   it("caso4", () => {
     // Arrange
-    let contraseña = "KLOE"
+    let contraseña = "KLOE";
     // Act
-    let comprobacion = tieneMayusculasYMinusculas(contraseña)
+    let comprobacion = tieneMayusculasYMinusculas(contraseña);
     let resultado = {
       esValida: false,
-      error: "No contiene al menos una minuscula"
-    }
+      error: "No contiene al menos una minuscula",
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
@@ -54,24 +63,24 @@ describe("tieneMayusculasYMinusculas", () => {
 describe("tieneNumeros", () => {
   it("caso1", () => {
     // Arrange
-    let contraseña = "asdjakAKA123"
+    let contraseña = "asdjakAKA123";
     // Act
-    let comprobacion = tieneNumeros(contraseña)
+    let comprobacion = tieneNumeros(contraseña);
     let resultado = {
       esValida: true,
-    }
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
   it("caso2", () => {
     // Arrange
-    let contraseña = "asdf"
+    let contraseña = "asdf";
     // Act
-    let comprobacion = tieneNumeros(contraseña)
+    let comprobacion = tieneNumeros(contraseña);
     let resultado = {
       esValida: false,
-      error: "La contraseña debe contener al menos un numero"
-    }
+      error: "La contraseña debe contener al menos un numero",
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
@@ -80,24 +89,24 @@ describe("tieneNumeros", () => {
 describe("tieneCaracterEspeciales", () => {
   it("caso1", () => {
     // Arrange
-    let contraseña = "jasdkj@"
+    let contraseña = "jasdkj@";
     // Act
-    let comprobacion = tieneCaracteresEspeciales(contraseña)
+    let comprobacion = tieneCaracteresEspeciales(contraseña);
     let resultado = {
       esValida: true,
-    }
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
   it("caso2", () => {
     // Arrange
-    let contraseña = "asdf"
+    let contraseña = "asdf";
     // Act
-    let comprobacion = tieneCaracteresEspeciales(contraseña)
+    let comprobacion = tieneCaracteresEspeciales(contraseña);
     let resultado = {
       esValida: false,
-      error: "La contraseña debe contener al menos un caracter especial"
-    }
+      error: "La contraseña debe contener al menos un caracter especial",
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
@@ -106,24 +115,24 @@ describe("tieneCaracterEspeciales", () => {
 describe("tieneLongitudMinima", () => {
   it("caso1", () => {
     // Arrange
-    let contraseña = "jas123qweqw"
+    let contraseña = "jas123qweqw";
     // Act
-    let comprobacion = tieneLongitudMinima(contraseña)
+    let comprobacion = tieneLongitudMinima(contraseña);
     let resultado = {
       esValida: true,
-    }
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
   it("caso2", () => {
     // Arrange
-    let contraseña = "asdf"
+    let contraseña = "asdf";
     // Act
-    let comprobacion = tieneLongitudMinima(contraseña)
+    let comprobacion = tieneLongitudMinima(contraseña);
     let resultado = {
       esValida: false,
-      error: "La contraseña debe contener al menos 8 caracteres"
-    }
+      error: "La contraseña debe contener al menos 8 caracteres",
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
@@ -132,24 +141,24 @@ describe("tieneLongitudMinima", () => {
 describe("tienePalabrasComunes", () => {
   it("caso1", () => {
     // Arrange
-    let contraseña = "monkey"
+    let contraseña = "monkey";
     // Act
-    let comprobacion = tienePalabrasComunes(contraseña, commonPasswords)
+    let comprobacion = tienePalabrasComunes(contraseña, commonPasswords);
     let resultado = {
       esValida: false,
       error: "La contraseña no puede ser tan facil",
-    }
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
   it("caso2", () => {
     // Arrange
-    let contraseña = "asdfasfd"
+    let contraseña = "asdfasfd";
     // Act
-    let comprobacion = tienePalabrasComunes(contraseña, commonPasswords)
+    let comprobacion = tienePalabrasComunes(contraseña, commonPasswords);
     let resultado = {
       esValida: true,
-    }
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
@@ -158,26 +167,26 @@ describe("tienePalabrasComunes", () => {
 describe("tieneNombreUsuario", () => {
   it("caso1", () => {
     // Arrange
-    let nombre = "pedro"
-    let contraseña = "123pedro"
+    let nombre = "pedro";
+    let contraseña = "123pedro";
     // Act
-    let comprobacion = tieneNombreUsuario(nombre, contraseña)
+    let comprobacion = tieneNombreUsuario(nombre, contraseña);
     let resultado = {
       esValida: false,
       error: "La contraseña no puede contener el nombre",
-    }
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
   it("caso2", () => {
     // Arrange
-    let nombre = "pedro"
-    let contraseña = "1313qweqe"
+    let nombre = "pedro";
+    let contraseña = "1313qweqe";
     // Act
-    let comprobacion = tieneNombreUsuario(nombre, contraseña)
+    let comprobacion = tieneNombreUsuario(nombre, contraseña);
     let resultado = {
       esValida: true,
-    }
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
@@ -186,29 +195,54 @@ describe("tieneNombreUsuario", () => {
 describe("validarClave", () => {
   it("caso1", () => {
     // Arrange
-    let nombre = "pedro"
-    let contraseña = "123pedro"
-    let palabrasComunes = commonPasswords
+    let nombre = "pedro";
+    let contraseña = "123pedro";
+    let palabrasComunes = commonPasswords;
     // Act
-    let comprobacion = validarClave(nombre, contraseña, palabrasComunes)
+    let comprobacion = validarClave(nombre, contraseña, palabrasComunes);
     let resultado = {
       esValida: false,
-    }
+      error: [
+        "No contiene al menos una mayuscula",
+        "La contraseña debe contener al menos un caracter especial",
+        "La contraseña no puede contener el nombre",
+      ],
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
   it("caso2", () => {
     // Arrange
-    let nombre = "pedro"
-    let contraseña = "1313qweqA@"
-    let palabrasComunes = commonPasswords
+    let nombre = "pedro";
+    let contraseña = "1313qweqA@";
+    let palabrasComunes = commonPasswords;
     // Act
-    let comprobacion = validarClave(nombre, contraseña, palabrasComunes)
+    let comprobacion = validarClave(nombre, contraseña, palabrasComunes);
     let resultado = {
       esValida: true,
-    }
+      error: [],
+    };
+    // Assert
+    expect(comprobacion).toStrictEqual(resultado);
+  });
+  it("caso3", () => {
+    // Arrange
+    let nombre = "pedro";
+    let contraseña = "monkey";
+    let palabrasComunes = commonPasswords;
+    // Act
+    let comprobacion = validarClave(nombre, contraseña, palabrasComunes);
+    let resultado = {
+      esValida: false,
+      error: [
+        "La contraseña debe contener al menos 8 caracteres",
+        "No contiene al menos una mayuscula",
+        "La contraseña debe contener al menos un caracter especial",
+        "La contraseña debe contener al menos un numero",
+        "La contraseña no puede ser tan facil",
+      ],
+    };
     // Assert
     expect(comprobacion).toStrictEqual(resultado);
   });
 });
-

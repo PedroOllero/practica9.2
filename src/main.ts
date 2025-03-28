@@ -145,7 +145,18 @@ export const validarClave = (
     (item) => item.esValida === true
   );
 
+let erroresArray: string[] = arrayErrores
+  .map((param) => {
+    if (!param.esValida && typeof param.error === "string") {
+      return param.error;
+    }
+    return "";
+  })
+  .filter((error) => error !== "");
+
   return {
     esValida: hayErrores,
+    error: erroresArray
   };
+
 };
