@@ -76,3 +76,17 @@ export const tieneCaracteresEspeciales = (clave: string): ValidacionClave => {
       };
   }
 };
+
+export const tieneLongitudMinima = (clave: string): ValidacionClave => {
+    let contraseñaArray: string[] = clave.split("");
+    if(contraseñaArray.length < 8){
+        return {
+            esValida: false,
+            error: "La contraseña debe contener al menos 8 caracteres"
+          };
+    }else{
+        return {
+            esValida: true,
+          };
+    }
+  };

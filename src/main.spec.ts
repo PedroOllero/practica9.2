@@ -1,4 +1,4 @@
-import { tieneCaracteresEspeciales, tieneMayusculasYMinusculas, tieneNumeros } from "./main";
+import { tieneCaracteresEspeciales, tieneLongitudMinima, tieneMayusculasYMinusculas, tieneNumeros } from "./main";
 
 describe("tieneMayusculasYMinusculas", () => {
   it("caso1", () => {
@@ -101,3 +101,30 @@ describe("tieneCaracterEspeciales", () => {
     expect(comprobacion).toStrictEqual(resultado);
   });
 });
+
+describe("tieneLongitudMinima", () => {
+  it("caso1", () => {
+    // Arrange
+    let contraseña = "jas123qweqw"
+    // Act
+    let comprobacion = tieneLongitudMinima(contraseña)
+    let resultado = {
+      esValida: true,
+    }
+    // Assert
+    expect(comprobacion).toStrictEqual(resultado);
+  });
+  it("caso2", () => {
+    // Arrange
+    let contraseña = "asdf"
+    // Act
+    let comprobacion = tieneLongitudMinima(contraseña)
+    let resultado = {
+      esValida: false,
+      error: "La contraseña debe contener al menos 8 caracteres"
+    }
+    // Assert
+    expect(comprobacion).toStrictEqual(resultado);
+  });
+});
+
