@@ -103,10 +103,10 @@ export const tieneNombreUsuario = (
       esValida: false,
       error: "La contraseña no puede contener el nombre",
     };
-  }else{
-    return{
-        esValida: true,
-      }
+  } else {
+    return {
+      esValida: true,
+    };
   }
 };
 
@@ -125,4 +125,27 @@ export const tienePalabrasComunes = (
       esValida: true,
     };
   }
+};
+
+export const validarClave = (
+  nombreUsuario: string,
+  clave: string,
+  commonPasswords: string[]
+): ValidacionClave => {
+  let param1 = tieneLongitudMinima(clave);
+  let param2 = tieneMayusculasYMinusculas(clave);
+  let param3 = tieneCaracteresEspeciales(clave);
+  let param4 = tieneNumeros(clave);
+  let param5 = tieneNombreUsuario(nombreUsuario, clave);
+  let param6 = tienePalabrasComunes(clave, commonPasswords);
+
+  let arrayErrores = [param1, param2, param3, param4, param5, param6];
+
+  let hayErrores: boolean = arrayErrores.every(
+    (item) => item.esValida === true
+  );
+
+  return {
+    esValida: hayErrores,
+  };
 };
