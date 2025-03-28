@@ -91,26 +91,38 @@ export const tieneLongitudMinima = (clave: string): ValidacionClave => {
   }
 };
 
-const tieneNombreUsuario = (
+export const tieneNombreUsuario = (
   nombreUsuario: string,
   clave: string
-): ValidacionClave => {};
+): ValidacionClave => {
+  const contieneNombre = clave
+    .toLowerCase()
+    .includes(nombreUsuario.toLowerCase());
+  if (contieneNombre) {
+    return {
+      esValida: false,
+      error: "La contraseña no puede contener el nombre",
+    };
+  }else{
+    return{
+        esValida: true,
+      }
+  }
+};
 
 export const tienePalabrasComunes = (
   clave: string,
   commonPasswords: string[]
 ): ValidacionClave => {
-  const hayEspeciales = commonPasswords.some((item) =>
-  item === clave
-  );
-  if(hayEspeciales === true){
+  const hayEspeciales = commonPasswords.some((item) => item === clave);
+  if (hayEspeciales === true) {
     return {
-        esValida: false,
-        error: "La contraseña no puede ser tan facil",
-      }
-  }else{
-    return{
-        esValida: true,
-      }
+      esValida: false,
+      error: "La contraseña no puede ser tan facil",
+    };
+  } else {
+    return {
+      esValida: true,
+    };
   }
 };

@@ -1,5 +1,5 @@
 import { commonPasswords } from "./const";
-import { tieneCaracteresEspeciales, tieneLongitudMinima, tieneMayusculasYMinusculas, tieneNumeros, tienePalabrasComunes } from "./main";
+import { tieneCaracteresEspeciales, tieneLongitudMinima, tieneMayusculasYMinusculas, tieneNombreUsuario, tieneNumeros, tienePalabrasComunes } from "./main";
 
 describe("tieneMayusculasYMinusculas", () => {
   it("caso1", () => {
@@ -147,6 +147,34 @@ describe("tienePalabrasComunes", () => {
     let contraseña = "asdfasfd"
     // Act
     let comprobacion = tienePalabrasComunes(contraseña, commonPasswords)
+    let resultado = {
+      esValida: true,
+    }
+    // Assert
+    expect(comprobacion).toStrictEqual(resultado);
+  });
+});
+
+describe("tieneNombreUsuario", () => {
+  it("caso1", () => {
+    // Arrange
+    let nombre = "pedro"
+    let contraseña = "123pedro"
+    // Act
+    let comprobacion = tieneNombreUsuario(nombre, contraseña)
+    let resultado = {
+      esValida: false,
+      error: "La contraseña no puede contener el nombre",
+    }
+    // Assert
+    expect(comprobacion).toStrictEqual(resultado);
+  });
+  it("caso2", () => {
+    // Arrange
+    let nombre = "pedro"
+    let contraseña = "1313qweqe"
+    // Act
+    let comprobacion = tieneNombreUsuario(nombre, contraseña)
     let resultado = {
       esValida: true,
     }
