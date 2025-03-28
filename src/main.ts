@@ -1,6 +1,6 @@
 import { ValidacionClave } from "./modal";
 
-const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
+export const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
   let minusculas: string = "qwertyuiopasdfghjklzxcvbnm";
   let mayusculas: string = "QWERTYUIOPASDFGHJKLZXCVBNM";
   let contraseñaArray: string[] = clave.split("");
@@ -12,50 +12,49 @@ const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
     mayusculas.includes(item)
   );
 
-  console.log(hayCoincidenciaMayus)
-  console.log(hayCoincidenciaMinus)
-
-  if (
-    hayCoincidenciaMayus === true &&
-    hayCoincidenciaMinus === true
-  ) {
+  if (hayCoincidenciaMayus === true && hayCoincidenciaMinus === true) {
     return {
       esValida: true,
     };
   }
-  if (
-    hayCoincidenciaMayus === false &&
-    hayCoincidenciaMinus === false
-  ) {
+  if (hayCoincidenciaMayus === false && hayCoincidenciaMinus === false) {
     return {
       esValida: false,
-      error: "La contraseña debe contener al menos una mayuscula y una minuscula"
+      error:
+        "La contraseña debe contener al menos una mayuscula y una minuscula",
     };
   }
-  if (
-    hayCoincidenciaMayus === true &&
-    hayCoincidenciaMinus === false
-  ) {
+  if (hayCoincidenciaMayus === true && hayCoincidenciaMinus === false) {
     return {
       esValida: false,
-      error: "No contiene al menos una minuscula"
+      error: "No contiene al menos una minuscula",
     };
   }
-  if (
-    hayCoincidenciaMayus === false &&
-    hayCoincidenciaMinus === true
-  ) {
+  if (hayCoincidenciaMayus === false && hayCoincidenciaMinus === true) {
     return {
       esValida: false,
-      error: "No contiene al menos una mayuscula"
+      error: "No contiene al menos una mayuscula",
     };
   }
-  
-  return{
+
+  return {
     esValida: false,
-    error: "Contraseña incorrecta"
+    error: "Contraseña incorrecta",
   };
 };
 
-let resultado = tieneMayusculasYMinusculas("asd")
-console.log(resultado)
+export const tieneNumeros = (clave: string): ValidacionClave => {
+  let numeros: string = "0123456789";
+  let contraseñaArray: string[] = clave.split("");
+  const hayNumeros = contraseñaArray.some((item) => numeros.includes(item));
+  if (hayNumeros === true) {
+    return {
+      esValida: true,
+    };
+  }else{
+    return {
+        esValida: false,
+        error: "La contraseña debe contener al menos un numero",
+      };
+  }
+};
