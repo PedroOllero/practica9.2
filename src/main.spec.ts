@@ -1,4 +1,4 @@
-import { tieneMayusculasYMinusculas, tieneNumeros } from "./main";
+import { tieneCaracteresEspeciales, tieneMayusculasYMinusculas, tieneNumeros } from "./main";
 
 describe("tieneMayusculasYMinusculas", () => {
   it("caso1", () => {
@@ -70,6 +70,32 @@ describe("tieneNumeros", () => {
     let resultado = {
       esValida: false,
       error: "La contraseña debe contener al menos un numero"
+    }
+    // Assert
+    expect(comprobacion).toStrictEqual(resultado);
+  });
+});
+
+describe("tieneCaracterEspeciales", () => {
+  it("caso1", () => {
+    // Arrange
+    let contraseña = "jasdkj@"
+    // Act
+    let comprobacion = tieneCaracteresEspeciales(contraseña)
+    let resultado = {
+      esValida: true,
+    }
+    // Assert
+    expect(comprobacion).toStrictEqual(resultado);
+  });
+  it("caso2", () => {
+    // Arrange
+    let contraseña = "asdf"
+    // Act
+    let comprobacion = tieneCaracteresEspeciales(contraseña)
+    let resultado = {
+      esValida: false,
+      error: "La contraseña debe contener al menos un caracter especial"
     }
     // Assert
     expect(comprobacion).toStrictEqual(resultado);

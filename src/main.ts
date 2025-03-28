@@ -51,10 +51,28 @@ export const tieneNumeros = (clave: string): ValidacionClave => {
     return {
       esValida: true,
     };
-  }else{
+  } else {
+    return {
+      esValida: false,
+      error: "La contraseña debe contener al menos un numero",
+    };
+  }
+};
+
+export const tieneCaracteresEspeciales = (clave: string): ValidacionClave => {
+  let caracteresEspeciales: string = `/[!@#$%^&*(),.?":{}|<>]/`;
+  let contraseñaArray: string[] = clave.split("");
+  const hayEspeciales = contraseñaArray.some((item) =>
+    caracteresEspeciales.includes(item)
+  );
+  if (hayEspeciales === true) {
+    return {
+      esValida: true,
+    };
+  } else {
     return {
         esValida: false,
-        error: "La contraseña debe contener al menos un numero",
+        error: "La contraseña debe contener al menos un caracter especial"
       };
   }
 };
